@@ -1,0 +1,46 @@
+Se trata de un proyecto que almacena la información correspondiente a un conjunto de partículas; para respaldar la información bastará con crear algún algoritmo que sea capaz de, cada determinado tiempo, actualizar el archivo de respaldo de información. Para ello implementamos la siguiente función en Python:
+def timer(self): # REALIZA LA ACCION DE RESPALDO CADA 30 SEGUNDOS #
+        while True: # Accion a repetir
+            self.action_guardar_archivo_respaldo()
+            time.sleep(30)
+
+Que llama a la siguiente función:
+@Slot()
+    def action_guardar_archivo_respaldo(self): # GUARDA ARCHIVO DE RESPALDO #
+        print("Respaldado")
+        self.particulas.guardar("C:/SEMINARIO DE ALGORITMIA/ACT10/model/respaldo.json")
+
+Que es llamada del siguiente modo:
+# Iniciar la ejecución en segundo plano.
+        t = threading.Thread(target = self.timer)
+        t.start()
+
+Por lo que, en general, obtenemos el siguiente resultado:
+Archivo de respaldo:
+[]
+ 
+Archivo de respaldo actualizado:
+[
+     {
+          "id": 1,
+          "origen_x": 1,
+          "origen_y": 0,
+          "destino_x": 1,
+          "destino_y": 0,
+          "velocidad": 0,
+          "red": 1,
+          "green": 0,
+          "blue": 1
+     },
+     {
+          "id": 112,
+          "origen_x": 112,
+          "origen_y": 123,
+          "destino_x": 1,
+          "destino_y": 0,
+          "velocidad": 0,
+          "red": 1,
+          "green": 0,
+          "blue": 1
+     }
+]
